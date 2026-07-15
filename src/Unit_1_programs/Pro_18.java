@@ -1,9 +1,9 @@
-package Unit_1_Programs;
+package Unit_1_programs;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class Pro_11 {
+public class Pro_18 {
 
     public static void main(String[] args) {
 
@@ -21,13 +21,14 @@ public class Pro_11 {
 
             Scanner sc = new Scanner(System.in);
 
-            System.out.print("Enter Department Name : ");
-            String deptName = sc.next();
+            System.out.print("Enter Designation : ");
+            String designation = sc.next();
 
-            Statement st = con.createStatement();
+            CallableStatement cs = con.prepareCall("{call getEmpByDesignation(?)}");
 
-            ResultSet rs = st.executeQuery("SELECT * FROM emp WHERE department='" + deptName + "'");
+            cs.setString(1, designation);
 
+            ResultSet rs = cs.executeQuery();
 
             boolean found = false;
 
@@ -35,13 +36,18 @@ public class Pro_11 {
 
                 found = true;
 
+                System.out.println("Emp No      : " + rs.getInt("empno"));
                 System.out.println("Emp Name    : " + rs.getString("empnm"));
                 System.out.println("Designation : " + rs.getString("designation"));
-                System.out.println("---------------------------");
+                System.out.println("City        : " + rs.getString("city"));
+                System.out.println("Salary      : " + rs.getDouble("salary"));
+                System.out.println("Department  : " + rs.getString("department"));
+                System.out.println("-----------------------------");
+
             }
 
             if (!found) {
-                System.out.println("Employee Record Not Found for department : " + deptName);
+                System.out.println("No Employee Found.");
             }
 
             con.close();

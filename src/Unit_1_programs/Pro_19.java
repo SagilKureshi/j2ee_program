@@ -1,4 +1,4 @@
-package Unit_1_Programs;
+package Unit_1_programs;
 
 import java.sql.*;
 import java.util.Scanner;
