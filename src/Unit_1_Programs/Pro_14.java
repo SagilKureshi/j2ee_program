@@ -1,9 +1,9 @@
-package pro_12;
+package Unit_1_Programs;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class Pro_12 {
+public class Pro_14 {
 
     public static void main(String[] args) {
 
@@ -24,31 +24,20 @@ public class Pro_12 {
             System.out.print("Enter Roll No : ");
             int rollno = sc.nextInt();
 
-            System.out.print("Enter First Name : ");
-            String firstname = sc.next();
-
-            System.out.print("Enter Last Name : ");
-            String lastname = sc.next();
-
-            System.out.print("Enter Course : ");
-            String course = sc.next();
-
-            System.out.print("Enter Semester : ");
-            int semester = sc.nextInt();
 
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO stud VALUES(?,?,?,?,?)"
+                    "DELETE FROM stud WHERE rollno=?"
             );
 
             ps.setInt(1, rollno);
-            ps.setString(2, firstname);
-            ps.setString(3, lastname);
-            ps.setString(4, course);
-            ps.setInt(5, semester);
 
-            ps.executeUpdate();
+            int i = ps.executeUpdate();
 
-            System.out.println("Record Inserted Successfully...");
+            if (i > 0) {
+                System.out.println("Record Deleted Successfully...");
+            } else {
+                System.out.println("Record Not Found...");
+            }
 
             con.close();
 

@@ -1,8 +1,9 @@
-package pro_2;
+package Unit_1_Programs;
 
 import java.sql.*;
+import java.util.Scanner;
 
-public class Pro_2 {
+public class Pro_10 {
 
     public static void main(String[] args) {
 
@@ -15,28 +16,39 @@ public class Pro_2 {
                     "root",
                     "root007"
             );
+
             System.out.println("Connection Successful...");
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.print("Enter Employee Number : ");
+            int empno = sc.nextInt();
 
             Statement st = con.createStatement();
 
-            ResultSet rs = st.executeQuery("select * from emp");
+            ResultSet rs = st.executeQuery("SELECT * FROM emp WHERE empno=" + empno);
 
-            while(rs.next()){
+            if (rs.next()) {
+
                 System.out.println("Emp No      : " + rs.getInt(1));
                 System.out.println("Emp Name    : " + rs.getString(2));
                 System.out.println("Designation : " + rs.getString(3));
                 System.out.println("City        : " + rs.getString(4));
                 System.out.println("Salary      : " + rs.getDouble(5));
                 System.out.println("Department  : " + rs.getString(6));
-                System.out.println("");
-            }
-            System.out.println("Select Succesful");
 
-            // Close Connection
+            } else {
+
+                System.out.println("Employee Record Not Found for empno : " +empno);
+
+            }
+
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Error" + e);
+
+            System.out.println("Error : " + e);
+
         }
     }
 }
