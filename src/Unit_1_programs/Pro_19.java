@@ -99,9 +99,9 @@ public class Pro_19 {
                     ps2.setInt(3, qty);
                     ps2.setInt(4, pid);
 
-                    int i = ps2.executeUpdate();
+                    int ur = ps2.executeUpdate();
 
-                    if (i > 0) {
+                    if (ur > 0) {
                         System.out.println("Product Updated Successfully...");
                     } else {
                         System.out.println("Product Not Found...");
@@ -119,9 +119,9 @@ public class Pro_19 {
 
                     ps3.setInt(1, pid);
 
-                    i = ps3.executeUpdate();
+                    int dr = ps3.executeUpdate();
 
-                    if (i > 0) {
+                    if (dr > 0) {
                         System.out.println("Product Deleted Successfully...");
                     } else {
                         System.out.println("Product Not Found...");
