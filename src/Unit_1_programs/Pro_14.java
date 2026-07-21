@@ -14,7 +14,7 @@ public class Pro_14 {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/student",
                     "root",
-                    "root007"
+                    ""
             );
 
             System.out.println("Connection Successful...");

@@ -13,7 +13,7 @@ public class Pro_3To6_8 {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/company",
                     "root",
-                    "root007"
+                    ""
             );
 
             System.out.println("Connection Successful...");
