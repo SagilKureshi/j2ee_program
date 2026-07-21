@@ -136,9 +136,9 @@ public class Pro_19 {
 
                 }
                 System.out.print("Do you want to continue(Y/N) : ");
-                choice = sc.next`().toLowerCase();
+                choice = sc.next().toLowerCase();
 
-            }while (choice == "yes");
+            }while (choice.equals("y"));
 
                 con.close();
 
